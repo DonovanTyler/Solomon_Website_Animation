@@ -102,12 +102,21 @@ function draw(){
   let canvas = document.getElementById('canvas');
   if (canvas.getContext) {
     let ctx = canvas.getContext('2d');
+    ctx.globalCompositeOperation = 'destination-over';
+    ctx.save();
+    ctx.clearRect(0, 0, 1275, 500); // clear canvas
   ctx.fillRect(700,300, 100, 100);
   drawTriangle();
   ctx.ellipse(700, 200, 50, 100, 0, 0, Math.PI*2);
+  ctx.fill();
   ctx.closePath();
   ctx.ellipse(650,345,62,62,0,0,Math.PI*2);
   ctx.fill();
+  ctx.save();
+  let time = new Date();
+  ctx.rotate(time.getSeconds() + time.getMilliseconds() / 1000);
+  ctx.restore();
+   window.requestAnimationFrame(draw);
 }
 }
 
@@ -118,7 +127,11 @@ function drawTriangle(){
     ctx.moveTo(700, 50);
     ctx.lineTo(750, 100);
     ctx.lineTo(650, 100);
+    ctx.fill();
     ctx.closePath();
+    ctx.save();
+    let time2 = new Date();
+    ctx.translate(0, time2.getSeconds());
   }
 }
 
