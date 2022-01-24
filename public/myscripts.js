@@ -103,9 +103,10 @@ function draw(){
   if (canvas.getContext) {
     let ctx = canvas.getContext('2d');
     ctx.globalCompositeOperation = 'destination-over';
-    ctx.save();
     ctx.clearRect(0, 0, 1275, 500); // clear canvas
   ctx.fillRect(700,300, 100, 100);
+  let time = new Date();
+  ctx.rotate(time.getSeconds() + time.getMilliseconds() / 1000);
   drawTriangle();
   ctx.ellipse(700, 200, 50, 100, 0, 0, Math.PI*2);
   ctx.fill();
@@ -113,8 +114,6 @@ function draw(){
   ctx.ellipse(650,345,62,62,0,0,Math.PI*2);
   ctx.fill();
   ctx.save();
-  let time = new Date();
-  ctx.rotate(time.getSeconds() + time.getMilliseconds() / 1000);
   ctx.restore();
    window.requestAnimationFrame(draw);
 }
