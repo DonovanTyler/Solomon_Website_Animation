@@ -130,7 +130,8 @@ function drawTriangle(){
     ctx.closePath();
     ctx.save();
     let time2 = new Date();
-    ctx.translate(0, time2.getSeconds());
+    ctx.translate(0, time2.getSeconds()/10);
+    ctx.restore();
   }
 }
 
