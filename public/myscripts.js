@@ -106,6 +106,9 @@ function draw(){
     //let time2 = new Date();
   //  ctx.translate(0, time2.getSeconds()/30);
     ctx.clearRect(0, 0, 1275, 500); // clear canvas
+    ctx.save();
+ var time2 = new Date();
+ ctx.translate(0, time2.getSeconds()/60);
       let time = new Date();
   drawTriangle();
   ctx.ellipse(700, 200, 50, 100, 0, 0, Math.PI*2);
